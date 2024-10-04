@@ -1,19 +1,20 @@
-import './App.css';
-import LoginForm from './Components/LoginForm/LoginForm';  // Import the combined Login/Logout form
-import { useEffect } from 'react';  
-import { gapi } from 'gapi-script';
+import "./App.css";
+import LoginForm from "./Components/LoginForm/LoginForm"; // Import the combined Login/Logout form
+import { useEffect } from "react";
+import { gapi } from "gapi-script";
 
-const clientId = "672690374803-2cfaejd10p0uk8flvflls9jmm4ugl586.apps.googleusercontent.com";
+const clientId =
+  "672690374803-2cfaejd10p0uk8flvflls9jmm4ugl586.apps.googleusercontent.com";
 
 function App() {
   useEffect(() => {
     function start() {
       gapi.client.init({
         clientId: clientId,
-        scope: ""
+        scope: "",
       });
-    };
-    gapi.load('client:auth2', start);
+    }
+    gapi.load("client:auth2", start);
   }, []);
 
   return (
@@ -22,7 +23,7 @@ function App() {
       <LoginForm />
 
       {/* Add any additional content here if needed */}
-      </div>
+    </div>
   );
 }
 

@@ -19,7 +19,7 @@ export const LoginForm = () => {
 
   return (
     <div className='wrapper'>
-      {!isLoggedIn ? 
+      {!isLoggedIn ? (
         <form action=''>
           <h1>Login</h1>
 
@@ -33,34 +33,28 @@ export const LoginForm = () => {
             <FaLock className='icon' />
           </div>
 
-          <div className="remember-me">
-            <label>
-              <input type='checkbox' /> Remember me?
-            </label>
-          </div>
-
           <button type='submit'>Login</button>
 
           <div className="register-link">
             <hr style={{ margin: '20px 0', border: '0.5px solid lightgray' }} />
             <p>Don't have an account?</p>
           </div>
+          <div className='google-login-button'>
 
-          {/* Google Login Button */}
-          <div id="signInButton">
-            <GoogleLogin
-              clientId={clientId}
-              buttonText="Login with Google"
-              onSuccess={onLoginSuccess}
-              onFailure={onLoginFailure}
-              cookiePolicy={'single_host_origin'}
-            />
+            {/* Google Login Button */}
+            <div id="signInButton">
+              <GoogleLogin
+                clientId={clientId}
+                buttonText="Login with Google"
+                onSuccess={onLoginSuccess}
+                onFailure={onLoginFailure}
+                cookiePolicy={'single_host_origin'}
+
+              />
+            </div>
           </div>
         </form>
-      : (
-        <div> </div>
-      )
-      }
+      ) : null} {/* This will render nothing when the user is logged in */}
     </div>
   );
 };
