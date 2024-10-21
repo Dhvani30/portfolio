@@ -1,20 +1,29 @@
-function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
-}
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the necessary form elements
+  const signupForm = document.getElementById("signup");
+  const signInForm = document.getElementById("signIn");
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent the default anchor click behavior
-    const targetId = this.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
+  // Get the necessary button elements
+  const signInButton = document.getElementById("signInButton");
+  const signUpButton = document.getElementById("signUpButton");
 
-    // Scroll to the target section
-    targetSection.scrollIntoView({
-      behavior: "smooth", // Smooth scroll
-      block: "start", // Align at the start of the section
+  // Ensure the signup and sign-in forms are manipulated safely
+  if (signupForm) signupForm.style.display = "none"; // Hide signup by default
+  if (signInForm) signInForm.style.display = "block"; // Show sign-in by default
+
+  // Event listener for switching to the Sign In form
+  if (signInButton) {
+    signInButton.addEventListener("click", () => {
+      if (signupForm) signupForm.style.display = "none"; // Hide signup form
+      if (signInForm) signInForm.style.display = "block"; // Show sign-in form
     });
-  });
+  }
+
+  // Event listener for switching to the Sign Up form
+  if (signUpButton) {
+    signUpButton.addEventListener("click", () => {
+      if (signInForm) signInForm.style.display = "none"; // Hide sign-in form
+      if (signupForm) signupForm.style.display = "block"; // Show signup form
+    });
+  }
 });
